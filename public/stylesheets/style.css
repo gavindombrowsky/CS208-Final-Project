@@ -1,8 +1,180 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --dark-green: #10291D;
+    --saffron: #F7C64A;
+    --seasalt: #F7F7F7;
+    --cool-gray: #8E8E93;
 }
 
-a {
-  color: #00B7FF;
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--seasalt);
+    color: var(--dark-green);
+    line-height: 1.6;
+}
+
+/* Hero Section - Centered and Bold */
+.hero {
+    background-color: var(--dark-green);
+    color: var(--seasalt);
+    text-align: center;
+    padding: 100px 20px;
+    border-bottom: 4px solid var(--saffron); /* Saffron accent line from guidelines */
+}
+
+.main-logo { 
+    max-width: 220px; 
+    margin-bottom: 20px; 
+}
+
+.brand-title { 
+    font-size: 3rem;
+    letter-spacing: 6px; 
+    text-transform: uppercase; 
+    margin: 10px 0; 
+}
+
+.brand-tagline { 
+    font-family: 'Italianno', cursive; 
+    font-size: 38px; 
+    color: var(--saffron); 
+    margin-top: 0; 
+}
+
+.main-nav { 
+    margin: 30px 0; 
+}
+
+.nav-link { 
+    color: var(--seasalt); 
+    text-decoration: none; 
+    margin: 0 20px; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    color: var(--saffron);
+}
+
+.btn-primary { 
+    background: var(--saffron); 
+    color: var(--dark-green); 
+    padding: 16px 32px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    display: inline-block; 
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+/* Delivery Section - Fixing the alignment from your screenshot */
+.delivery-section { 
+    background: white; 
+    padding: 60px 20px; 
+    text-align: center; 
+}
+
+.delivery-section h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.delivery-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+.btn-delivery { 
+    border: 2px solid var(--dark-green); 
+    color: var(--dark-green); 
+    padding: 12px 25px; 
+    text-decoration: none; 
+    font-weight: 700;
+    border-radius: 4px; 
+    transition: 0.3s; 
+}
+
+.btn-delivery:hover { 
+    background: var(--dark-green); 
+    color: var(--seasalt); 
+}
+
+/* Home Content - Adding better padding */
+.home-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.home-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.home-content p {
+    color: var(--cool-gray);
+    font-size: 1.1rem;
+}
+
+/* Site Footer - Centered and clean */
+.site-footer {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    color: var(--cool-gray);
+}
+
+.comment-form-container {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+#commentForm input, #commentForm textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#commentForm textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.comment-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--saffron); /* Brand Saffron Accent */
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.comment-card strong {
+    color: var(--dark-green);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comment-card small {
+    color: var(--cool-gray);
+    font-size: 12px;
 }

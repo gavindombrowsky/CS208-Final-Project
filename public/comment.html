@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews | Downtown Donuts</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <header class="hero">
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About Us</a>
+            <a href="menu.html" class="nav-link">Menu</a>
+            <a href="comment.html" class="nav-link">Reviews</a>
+        </nav>
+        <h1 class="brand-title">REVIEWS</h1>
+        <p class="brand-tagline">Leave a Review</p>
+    </header>
+
+    <main class="home-content">
+        <section class="comment-form-container">
+            <form id="commentForm">
+                <!-- Check these IDs carefully -->
+                <input type="text" id="username" placeholder="Your Name" required>
+                <textarea id="commentText" placeholder="What's on your mind?" required></textarea>
+                <button type="submit" class="btn-primary">POST COMMENT</button>
+            </form>
+        </section>
+
+        <hr>
+        <h3 style="text-align: center;">Recent Comments</h3>
+        <div id="commentsList" style="max-width: 600px; margin: 20px auto;"></div>
+    </main>
+
+    <script>
+        const commentForm = document.getElementById('commentForm');
+        const list = document.getElementById('commentsList');
+
+        async function loadComments() {
+            try {
+                const res = await fetch('/api/comments');
+                const data = await res.json();
+                list.innerHTML = data.map(c => `
+                    <div class="comment-card" style="border-left: 5px solid #F7C64A; padding: 15px; background: #fff; margin-bottom: 10px; text-align: left;">
+                        <strong>${c.username}</strong>
+                        <p>${c.text}</p>
+                        <small style="color: #8E8E93;">${new Date(c.date).toLocaleString()}</small>
+                    </div>
+                `).join('');
+            } catch (e) { console.error("Load failed", e); }
+        }
+
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const payload = {
+                username: document.getElementById('username').value,
+                text: document.getElementById('commentText').value
+            };
+
+            const response = await fetch('/api/comments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                commentForm.reset();
+                loadComments();
+            }
+        });
+
+        loadComments();
+    </script>
+</body>
+</html>
